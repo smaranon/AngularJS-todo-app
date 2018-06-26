@@ -1,23 +1,20 @@
-import { Injectable } from '@angular/core';
-//import { TodoDataService } from './todo-data.service'
-import {Todo}  from './todo';
+import {Injectable} from '@angular/core';
+import {Todo} from './todo';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoDataService {
 
   // Placeholder for last id so we can simulate
-  // automatic incrementing of ids
+  // automatic incrementing of id's
   lastId: number = 0;
 
-  // Placeholder for todos
+  // Placeholder for todo's
   todos: Todo[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
-
-// Simulate POST /todos
+  // Simulate POST /todos
   addTodo(todo: Todo): TodoDataService {
     if (!todo.id) {
       todo.id = ++this.lastId;
@@ -56,7 +53,7 @@ export class TodoDataService {
   }
 
   // Toggle todo complete
-  toggleTodoComplete(todo: Todo){
+  toggleTodoComplete(todo: Todo) {
     let updatedTodo = this.updateTodoById(todo.id, {
       complete: !todo.complete
     });
