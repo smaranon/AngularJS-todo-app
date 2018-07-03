@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodosResolver } from './todos.resolver';
@@ -7,8 +8,12 @@ import { TodosResolver } from './todos.resolver';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'todos',
+    redirectTo: 'sign-in',
     pathMatch: 'full'
+  },
+  {
+    path: 'sign-in',
+    component: SignInComponent
   },
   {
     path: 'todos',
@@ -30,5 +35,4 @@ const routes: Routes = [
     TodosResolver
   ]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule { }

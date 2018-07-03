@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
 import { Http, Response } from '@angular/http';
+import { environment } from 'environments/environment';
 import { Todo } from './todo';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,6 +15,16 @@ export class ApiService {
   constructor(
     private http: Http
   ) {
+  }
+
+  public signIn(username: string, password: string) {
+    return this.http
+      .post(API_URL + '/sign-in', {
+        username,
+        password
+      })
+      .map(response => response.json())
+      .catch(this.handleError);
   }
 
   public getAllTodos(): Observable<Todo[]> {
@@ -61,7 +71,7 @@ export class ApiService {
       .catch(this.handleError);
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     console.error('ApiService::handleError', error);
     return Observable.throw(error);
   }
