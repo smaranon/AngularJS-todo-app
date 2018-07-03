@@ -1,4 +1,4 @@
-<!-- src/app/todos/todos.component.html -->
+<!-- Todos -->
 <section class="todoapp">
   <app-todo-list-header
     (add)="onAddTodo($event)"
@@ -12,3 +12,6 @@
     [todos]="todos"
   ></app-todo-list-footer>
 </section>
+
+<!-- Sign out button -->
+<button (click)="doSignOut()">Sign out</button>

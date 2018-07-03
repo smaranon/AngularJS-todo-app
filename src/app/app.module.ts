@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -10,8 +11,10 @@ import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.com
 import { TodoDataService } from './todo-data.service';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { ApiService } from './api.service';
-import { AppRoutingModule } from './app-routing.module';
+import { SignInComponent } from './sign-in/sign-in.component';
 import { TodosComponent } from './todos/todos.component';
+import { AuthService } from './auth.service';
+import { SessionService } from './session.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
@@ -22,15 +25,22 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TodoListHeaderComponent,
     TodoListItemComponent,
     TodosComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignInComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
-  providers: [TodoDataService, ApiService],
+  providers: [
+    ApiService,
+    AuthService,
+    SessionService,
+    TodoDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
